@@ -1,0 +1,92 @@
+
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Spese Ditta</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="h1">Spese Ditta</div>
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <button class="ghost tiny" id="btn-large" type="button" aria-pressed="false">Dimensioni: Normale</button>
+        <div class="badge mono" id="budget">€ 20,00</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div style="display:flex; gap:8px;">
+        <button class="secondary" id="prev" type="button">Giorno prec.</button>
+        <button class="secondary" id="next" type="button">Giorno succ.</button>
+      </div>
+      <input type="date" id="date" class="input text-center" style="flex:1">
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div>
+            <label>Pernottamento</label>
+            <div class="switch">
+              <input type="checkbox" id="trasferta">
+            </div>
+          </div>
+          <div>
+            <label>Collega</label>
+            <input id="collega" class="input text-left" placeholder="Es. Marco">
+          </div>
+        </div>
+
+        <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div>
+            <label>Cliente</label>
+            <input id="cliente" class="input text-left" placeholder="Es. Ferrari">
+          </div>
+          <div>
+            <label>Pranzo (€)</label>
+            <input id="pranzo" class="input text-center" inputmode="decimal" placeholder="0,00">
+          </div>
+        </div>
+
+        <div class="row" id="cena_hotel_row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div id="cena_wrap">
+            <label>Cena (€)</label>
+            <input id="cena" class="input text-center" inputmode="decimal" placeholder="0,00">
+          </div>
+          <div id="hotel_wrap">
+            <label>Hotel (€)</label>
+            <input id="hotel" class="input text-center" inputmode="decimal" placeholder="0,00">
+          </div>
+        </div>
+
+        <div class="footer">
+          <button class="primary bigsave" id="save" type="button">Salva</button>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="ghost" id="export_xls" type="button">Esporta Excel (.xls)</button>
+          </div>
+          <span class="small">Gli importi verranno <b>divisi per 2</b> in automatico.</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="small">Riepilogo mese</div>
+        <div id="cards" class="cards"></div>
+        <div class="footer">
+          <span>Totale mese (÷2): <b id="month_total">€ 0,00</b></span>
+          <span class="small">Budget mese (Lun–Ven): <b id="month_budget">€ 0,00</b></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Operazione completata</div>
+  <script src="app.js"></script>
+</body>
+</html>
